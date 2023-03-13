@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
-    public float health;
     public int phase;
     // raycast
     public Ray2D ray;
@@ -22,23 +21,38 @@ public class BossBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (health <= 100)
+        if (currentHealth <= 100)
         {
             phase = 1;
         }
-        if (health <= 50)
+        if (currentHealth <= 50)
         {
             phase = 2;
         }
-        if (health <= 25)
+        if (currentHealth <= 25)
         {
             phase = 3;
         }
+
+
     }
 
     void Update()
     {
-        if (health <= 0)
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            currentHealth = 100;
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            currentHealth = 50;
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            currentHealth = 25;
+        }
+
+        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -116,7 +130,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 20f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
                 }

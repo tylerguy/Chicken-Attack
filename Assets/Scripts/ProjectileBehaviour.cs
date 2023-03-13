@@ -24,7 +24,7 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             Destroy(this.gameObject);
             BossBehaviour boss = other.gameObject.GetComponent<BossBehaviour>();
-            boss.health -= 3;
+            boss.currentHealth -= 3;
         }
     }
 }
