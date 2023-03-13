@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthbar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     // get the player object
     public PlayerMovement player;

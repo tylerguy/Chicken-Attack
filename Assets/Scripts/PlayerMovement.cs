@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public int projectileSpeed;
     private Animator _animator;
 
+    private bool CanDash = true;
+
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -124,20 +126,27 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool("isMoving", false);
         }
 
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            // add rigidbody force in the direction the player is facing
+            if (CanDash)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+
         // get the textmeshpro component
         TMPro.TextMeshPro ammoTextMesh = ammoText.GetComponent<TMPro.TextMeshPro>();
         // set the text to the ammo value
         ammoTextMesh.text = ammo.ToString();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            if (this.gameObject.tag == "Player")
-            {
-                currentHealth -= 10;
-            }
+            TakeDamage(0.5f);
+            isGrounded = true;
         }
     }
 
@@ -161,6 +170,17 @@ public class PlayerMovement : MonoBehaviour
     void Die()
     {
         Destroy(this.gameObject);
+    }
+
+    IEnumerator Dash()
+    {
+        CanDash = false;
+        // get the direction the player is facing
+        Vector3 direction = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+        // add rigidbody force in the direction the player is facing
+        rb.AddForce(direction * 1000f);
+        yield return new WaitForSeconds(2f);
+        CanDash = true;
     }
 
 
