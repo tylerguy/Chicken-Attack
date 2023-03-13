@@ -52,7 +52,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
                 }
@@ -65,7 +65,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(-8.2655f, 8.2655f, 8.2655f);
 
@@ -84,7 +84,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
                 }
@@ -97,7 +97,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(-8.2655f, 8.2655f, 8.2655f);
 
@@ -114,7 +114,7 @@ public class BossBehaviour : MonoBehaviour
                 Debug.Log(hit.collider);
                 if (hit.collider.tag == "Player")
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.5f);
+                    transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
                 }
@@ -126,16 +126,8 @@ public class BossBehaviour : MonoBehaviour
             // if the player is in the boss's range, move towards the player
             // if the player is not in the boss's range, move towards the center of the screen
             GameObject player = GameObject.Find("Player");
-            if (player.transform.position.x > transform.position.x - 5 && player.transform.position.x < transform.position.x + 5)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.05f);
-            }
-            else
-            {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(0, 0), 0.05f);
-            }
 
-
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 10f);
 
         }
 
