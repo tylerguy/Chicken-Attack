@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         // add rigidbody force in the direction the player is facing
         rb.AddForce(direction * 1000f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         CanDash = true;
     }
 
