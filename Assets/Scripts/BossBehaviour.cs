@@ -8,6 +8,7 @@ public class BossBehaviour : MonoBehaviour
     // raycast
     public Ray2D ray;
     public float rayLength;
+    public Animator _animator;
 
     public Rigidbody2D rb;
 
@@ -71,6 +72,10 @@ public class BossBehaviour : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
+
+                    _animator.SetBool("isMoving", true);
+
+
                 }
             }
             ray = new Ray2D(transform.position, Vector2.right);
@@ -84,6 +89,8 @@ public class BossBehaviour : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(-8.2655f, 8.2655f, 8.2655f);
+
+                    _animator.SetBool("isMoving", true);
 
                 }
             }
@@ -103,6 +110,8 @@ public class BossBehaviour : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
+
+                    _animator.SetBool("isMoving", true);
                 }
             }
             ray = new Ray2D(transform.position, Vector2.right);
@@ -116,6 +125,8 @@ public class BossBehaviour : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 10f);
 
                     transform.localScale = new Vector3(-8.2655f, 8.2655f, 8.2655f);
+
+                    _animator.SetBool("isMoving", true);
 
                 }
             }
@@ -133,6 +144,8 @@ public class BossBehaviour : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, Time.deltaTime * 20f);
 
                     transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
+
+                    _animator.SetBool("isMoving", true);
                 }
             }
         }
@@ -145,6 +158,14 @@ public class BossBehaviour : MonoBehaviour
 
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 10f);
 
+            transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
+
+            _animator.SetBool("isMoving", true);
+        }
+
+        if (rb.velocity.x <= 0)
+        {
+            _animator.SetBool("isMoving", true);
         }
 
     }
