@@ -12,15 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public GameObject Projectile;
     public Transform rayorigin;
-    public float health;
 
     public float speed;
 
     public Transform bulletSpawn;
 
     public int ammo;
-
-
+    public float currentHealth = 0f;
+    public float maxHealth = 100f;
     public int projectileSpeed;
     private Animator _animator;
 
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         GameObject ammoText = GameObject.Find("Ammo");
+        currentHealth = maxHealth;
     }
 
     void FixedUpdate()
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetBool("isShooting", false);
         }
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -130,13 +130,13 @@ public class PlayerMovement : MonoBehaviour
         ammoTextMesh.text = ammo.ToString();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "BossProjectile")
+        if (other.gameObject.tag == "Enemy")
         {
             if (this.gameObject.tag == "Player")
             {
-                health -= 10;
+                currentHealth -= 10;
             }
         }
     }
@@ -146,6 +146,23 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         ammo = 10;
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        _animator.SetBool("damageTaken", true);
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+        _animator.SetBool("damageTaken", false);
+    }
+
+    void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
 
 }
 

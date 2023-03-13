@@ -51,6 +51,15 @@ public class BossBehaviour : MonoBehaviour
                 if (hit.collider.tag == "Player")
                 {
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    if (transform.position.x > hit.collider.transform.position.x)
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                    }
+
                 }
             }
             ray = new Ray2D(transform.position, Vector2.right);
@@ -62,6 +71,15 @@ public class BossBehaviour : MonoBehaviour
                 if (hit.collider.tag == "Player")
                 {
                     transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position, 0.05f);
+                    if (transform.position.x > hit.collider.transform.position.x)
+                    {
+                        // get current scale and flip it on the x axis
+                        transform.localScale = new Vector3(-8.2655f, 8.2655f, 8.2655f);
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(8.2655f, 8.2655f, 8.2655f);
+                    }
                 }
             }
         }
