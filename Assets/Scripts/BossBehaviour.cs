@@ -11,10 +11,13 @@ public class BossBehaviour : MonoBehaviour
     public float rayLength;
 
     public Rigidbody2D rb;
+
+    public float currentHealth = 0f;
+    public float maxHealth = 100f;
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHealth = maxHealth;
     }
 
     void FixedUpdate()
@@ -32,7 +35,6 @@ public class BossBehaviour : MonoBehaviour
             phase = 3;
         }
     }
-
 
     void Update()
     {
@@ -131,13 +133,5 @@ public class BossBehaviour : MonoBehaviour
 
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "Projectile")
-            {
-                health -= 10;
-                Destroy(collision.gameObject);
-            }
-        }
     }
 }

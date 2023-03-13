@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,16 @@ public class ProjectileBehaviour : MonoBehaviour
     void Update()
     {
         Destroy(this.gameObject, 2f);
+    }
+
+    // detect collision with enemy
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            BossBehaviour boss = other.gameObject.GetComponent<BossBehaviour>();
+            boss.health -= 3;
+        }
     }
 }

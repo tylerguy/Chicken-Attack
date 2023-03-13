@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider);
             if (hit.collider.tag == "Ground")
             {
                 isGrounded = true;
@@ -179,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         // add rigidbody force in the direction the player is facing
         rb.AddForce(direction * 1000f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         CanDash = true;
     }
 
