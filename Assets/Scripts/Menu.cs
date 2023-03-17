@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour
 {
     public Button startButton;
     public Button quitButton;
+
+    public Button menuButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,16 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
-        startButton.onClick.AddListener(StartGame);
-        quitButton.onClick.AddListener(QuitGame);
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            startButton.onClick.AddListener(StartGame);
+            quitButton.onClick.AddListener(QuitGame);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Win" || SceneManager.GetActiveScene().name == "Lose")
+        {
+            menuButton.onClick.AddListener(menu);
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +46,11 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
 
+    }
+
+    public void menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 

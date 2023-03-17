@@ -68,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
             // apply the scale
             transform.localScale = scale;
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            // flip the ammo text
             ammoText.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-
         }
         if (Input.GetKey(KeyCode.A))
         {

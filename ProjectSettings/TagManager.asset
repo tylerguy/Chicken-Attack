@@ -12,6 +12,7 @@ TagManager:
   - Left
   - Right
   - Enemy
+  - CamPos
   layers:
   - Default
   - TransparentFX

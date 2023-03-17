@@ -14,10 +14,12 @@ public class BossBehaviour : MonoBehaviour
 
     public float currentHealth = 0f;
     public float maxHealth = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        _animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -165,7 +167,7 @@ public class BossBehaviour : MonoBehaviour
 
         if (rb.velocity.x <= 0)
         {
-            _animator.SetBool("isMoving", true);
+            _animator.SetBool("IsMoving", true);
         }
 
     }
