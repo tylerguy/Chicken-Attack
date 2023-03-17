@@ -330,8 +330,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1937421958, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.16827697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937421958, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.028771361
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937421958, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0221598
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937421958, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.0168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937421958, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.101
       objectReference: {fileID: 0}
     - target: {fileID: 728030545173381809, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
       propertyPath: m_LocalScale.x
@@ -351,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1171608528146638090, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
       propertyPath: jumpForce
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5072198620885989298, guid: 649f2151f4ef83344840ca4d17ffabf8, type: 3}
       propertyPath: m_fontSize

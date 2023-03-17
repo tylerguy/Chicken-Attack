@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator WaitForReload()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         ammo = 10;
     }
 
