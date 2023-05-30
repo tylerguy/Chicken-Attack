@@ -108,12 +108,14 @@ public class PlayerMovement : MonoBehaviour
             else if (ammo <= 0)
             {
                 _animator.SetBool("isShooting", false);
+                _animator.StopPlayback();
                 StartCoroutine(WaitForReload());
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
             _animator.SetBool("isShooting", false);
+            _animator.StopPlayback();
         }
         if (currentHealth <= 0)
         {
@@ -123,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
         {
             _animator.SetBool("isMoving", false);
+            _animator.StopPlayback();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
