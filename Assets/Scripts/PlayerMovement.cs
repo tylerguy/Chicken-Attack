@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             _animator.StopPlayback();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             // add rigidbody force in the direction the player is facing
             if (CanDash)
